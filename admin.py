@@ -4,8 +4,9 @@ import random
 def display_doctor():
     que = "select * from doctors;"
     mycur.execute(que)
-    dat = cursor.fetchall()
-    print(dat)
+    dat = mycur.fetchall()
+    for line in dat:
+        print(line)
     f.commit()
     
 
@@ -31,7 +32,7 @@ def del_doctor():
 def display_nurse():
     que = "select * from nurses;"
     mycur.execute(que)
-    dat = cursor.fetchall()
+    dat = mycur.fetchall()
     print(dat)
     f.commit()
 
@@ -57,7 +58,7 @@ def del_nurse():
 def display_clerk():
     que = "select * from clerks;"
     mycur.execute(que)
-    dat = cursor.fetchall()
+    dat = mycur.fetchall()
     print(dat)
     f.commit()
 
@@ -82,17 +83,17 @@ def del_clerk():
 
 
 def available_beds():
-    mycur.execute("select count(*) from beds where STATUS = 'vacant' ;")
+    mycur.execute("select * from beds where STATUS_Vacant_Occupied = 'vacant' ;")
     dat = mycur.fetchall()
     for line in dat:
         print(line)
     f.commit()
 
 def add_beds():
-    mycur.execute("select MAX(B_ID) from beds;")
+    mycur.execute("select MAX(B_NO) from beds;")
     dat = mycur.fetchall()
     for line in dat:
-        no = line[0] + 1
+        no = line[0]
 
     num = int(input("Enter the number of beds you want to add: "))
 
@@ -100,7 +101,8 @@ def add_beds():
         floor = random.randint(1, 6)
         wing = random.choice(["A", "B", "C", "D", "E"])
         building = random.randint(1, 3)
-        mycur.execute("insert into beds(B_ID, FLOOR, WING, BUILDING, STATUS)values('{}','{}','{}','{}','{}')".format(no, floor, wing, building, "vacant"))
+        no += 1
+        mycur.execute("insert into beds(B_NO, FLOOR, WING, BUILDING, STATUS_Vacant_Occupied)values('{}','{}','{}','{}','{}')".format(no, floor, wing, building, "vacant"))
 
     f.commit()
 
@@ -111,7 +113,7 @@ mycur = f.cursor()
 mycur.execute("use MyHospital;")
 
 
-while opt != "E" or opt != "e":
+while True:
 
     print("Enter D: Edit doctors")
     print("Enter N: Edit nurses")
@@ -119,7 +121,7 @@ while opt != "E" or opt != "e":
     print("Enter B: Edit beds")
     print("Enter E: Exit")
 
-    opt = int(input("Enter your option: "))
+    opt = input("Enter your option: ")
 
     if opt == "D" or opt == "d":
         print("Enter 1: Display all the doctors")
@@ -127,15 +129,15 @@ while opt != "E" or opt != "e":
         print("Enter 3: Remove a doctor")
         print("Enter E: Exit")
 
-        opt = int(input("Enter your option: "))
+        opt = input("Enter your option: ")
 
-        if opt == 1:
+        if opt == '1':
             display_doctor()
-        if opt == 2:
+        if opt == '2':
             add_doctor()
-        if opt == 3:
+        if opt == '3':
             del_doctor()
-        if opt == "E" or opt = "e":
+        if opt == "E" or opt == "e":
             exit()
 
     if opt == "N" or opt == "n":
@@ -144,34 +146,34 @@ while opt != "E" or opt != "e":
         print("Enter 3: Remove a nurse")
         print("Enter E: Exit")
 
-        opt = int(input("Enter your option: "))
+        opt = input("Enter your option: ")
 
-        if opt == 1:
+        if opt == '1':
             display_nurse()
-        if opt == 2:
+        if opt == '2':
             add_nurse()
-        if opt == 3:
+        if opt == '3':
             del_nurse()
-        if opt == "E" or opt = "e":
+        if opt == "E" or opt == "e":
             exit()
 
 
-
+    
     if opt == "C" or opt == "c":
         print("Enter 1: Display all the clerks")
         print("Enter 2: Add a clerk")
         print("Enter 3: Remove a clerk")
         print("Enter E: Exit")
 
-        opt = int(input("Enter your option: "))
+        opt = input("Enter your option: ")
 
-        if opt == 1:
+        if opt == '1':
             display_clerk()
-        if opt == 2:
+        if opt == '2':
             add_clerk()
-        if opt == 3:
+        if opt == '3':
             del_clerk()
-        if opt == "E" or opt = "e":
+        if opt == "E" or opt == "e":
             exit()   
 
 
@@ -180,11 +182,11 @@ while opt != "E" or opt != "e":
         print("Enter 2: Add new beds")
         print("Enter E: Exit")
 
-        opt = int(input("Enter your option: "))
+        opt = input("Enter your option: ")
 
-        if opt == 1:
+        if opt == '1':
             available_beds()
-        if opt == 2:
+        if opt == '2':
             add_beds()
-        if opt == "E" or opt = "e":
+        if opt == "E" or opt == "e":
             exit()
