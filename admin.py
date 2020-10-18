@@ -7,6 +7,7 @@ def display_doctor():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
     
 
@@ -20,12 +21,16 @@ def add_doctor():
     for line in dat:
         no = line[0] + 1
     mycur.execute("insert into doctors(D_ID, NAME, PHONE_NO, QUALIFICATION)values('{}','{}','{}','{}')".format(no, name, phone, qual))
+    print("You added the doctor sucessfully!")
+    print()
     f.commit()
 
 
 def del_doctor():
     doc_id = int(input("Enter the doctors id: "))
     mycur.execute("delete from doctors where D_ID = '{}'".format(doc_id))
+    print("You removed the doctor sucessfully!")
+    print()
     f.commit()
 #-----------------------------------------------------
 
@@ -33,7 +38,9 @@ def display_nurse():
     que = "select * from nurses;"
     mycur.execute(que)
     dat = mycur.fetchall()
-    print(dat)
+    for line in dat:
+        print(line)
+    print()
     f.commit()
 
 def add_nurse():
@@ -45,12 +52,15 @@ def add_nurse():
     for line in dat:
         no = line[0] + 1
     mycur.execute("insert into nurses(N_ID, NAME, PHONE_NO)values('{}','{}','{}')".format(no, name, phone,))
-
+    print("You added the nurse sucessfully!")
+    print()
     f.commit()
 
 def del_nurse():
     nur_id = input("Enter the nurse's id: ")
     mycur.execute("delete from nurses where N_ID = '{}'".format(nur_id))
+    print("You removed the nurse sucessfully!")
+    print()
     f.commit()
 
 #------------------------------------------------------
@@ -59,7 +69,9 @@ def display_clerk():
     que = "select * from clerks;"
     mycur.execute(que)
     dat = mycur.fetchall()
-    print(dat)
+    for line in dat:
+        print(line)
+    print()
     f.commit()
 
 def add_clerk():
@@ -71,12 +83,15 @@ def add_clerk():
     for line in dat:
         no = line[0] + 1
     mycur.execute("insert into clerks(C_ID, NAME, PHONE_NO)values('{}','{}','{}')".format(no, name, phone,))
-
+    print("You added the clerk sucessfully!")
+    print()
     f.commit()
 
 def del_clerk():
     clerk_id = input("Enter the clerk's id: ")
     mycur.execute("delete from clerks where C_ID = '{}'".format(clerk_id))
+    print("You removed the clerk sucessfully!")
+    print()
     f.commit()
 
 #------------------------------------------------------
@@ -87,6 +102,7 @@ def available_beds():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
 
 def add_beds():
@@ -103,7 +119,8 @@ def add_beds():
         building = random.randint(1, 3)
         no += 1
         mycur.execute("insert into beds(B_NO, FLOOR, WING, BUILDING, STATUS_Vacant_Occupied)values('{}','{}','{}','{}','{}')".format(no, floor, wing, building, "vacant"))
-
+    print("You added the beds sucessfully!")
+    print()
     f.commit()
 
 #-------------------------------------------------------
@@ -113,86 +130,3 @@ mycur = f.cursor()
 mycur.execute("use MyHospital;")
 
 
-while True:
-
-    print("Enter D: Edit doctors")
-    print("Enter N: Edit nurses")
-    print("Enter C: Edit clerks")
-    print("Enter B: Edit beds")
-    print("Enter E: Exit")
-
-    opt = input("Enter your option: ")
-
-    if opt == "D" or opt == "d":
-        print("Enter 1: Display all the doctors")
-        print("Enter 2: Add a doctor")
-        print("Enter 3: Remove a doctor")
-        print("Enter E: Exit")
-
-        opt = input("Enter your option: ")
-
-        if opt == '1':
-            display_doctor()
-        if opt == '2':
-            add_doctor()
-        if opt == '3':
-            del_doctor()
-        if opt == "E" or opt == "e":
-            exit()
-
-    if opt == "N" or opt == "n":
-        print("Enter 1: Display all the nurses")
-        print("Enter 2: Add a nurse")
-        print("Enter 3: Remove a nurse")
-        print("Enter E: Exit")
-
-        opt = input("Enter your option: ")
-
-        if opt == '1':
-            display_nurse()
-        if opt == '2':
-            add_nurse()
-        if opt == '3':
-            del_nurse()
-        if opt == "E" or opt == "e":
-            exit()
-
-
-    
-    if opt == "C" or opt == "c":
-        print("Enter 1: Display all the clerks")
-        print("Enter 2: Add a clerk")
-        print("Enter 3: Remove a clerk")
-        print("Enter E: Exit")
-
-        opt = input("Enter your option: ")
-
-        if opt == '1':
-            display_clerk()
-        if opt == '2':
-            add_clerk()
-        if opt == '3':
-            del_clerk()
-        if opt == "E" or opt == "e":
-            exit()   
-
-
-    if opt == "B" or opt == "b":
-        print("Enter 1: Check the number of available beds")
-        print("Enter 2: Add new beds")
-        print("Enter E: Exit")
-
-        opt = input("Enter your option: ")
-
-        if opt == '1':
-            available_beds()
-        if opt == '2':
-            add_beds()
-        if opt == "E" or opt == "e":
-            exit()
-
-            
-            
-            
-            
-   
