@@ -2,9 +2,10 @@ import mysql.connector
 f = mysql.connector.connect(host = "localhost", user = "root", passwd = "", database = "MyHospital")
 mycur = f.cursor()
 mycur.execute("use MyHospital;")
-idd = int(input("Enter your doctor id: "))
+
 
 def display_active():
+    idd = int(input("Enter your doctor id: "))
     mycur.execute("select * from active where D_ID = {}".format(idd))
     dat = mycur.fetchall()
     for line in dat:
@@ -12,6 +13,7 @@ def display_active():
     f.commit()
         
 def view_patient():
+    idd = int(input("Enter your doctor id: "))
     pid = int(input("Enter patient's id, whome you want to view: "))
     mycur.execute("select * from active where ID = {}".format(pid))
     dat = mycur.fetchall()
@@ -20,6 +22,7 @@ def view_patient():
     f.commit()
         
 def modify_meds():
+    idd = int(input("Enter your doctor id: "))
     pid = int(input("Enter patient's id, whose medication needs to be modified: "))
     med = input("Enter new medication: ")
     mycur.execute("UPDATE prescriptions SET MEDICATION = '{}' where P_ID = {}".format(med, pid))
@@ -27,14 +30,13 @@ def modify_meds():
     f.commit()
     
 def update_general_status():
+    idd = int(input("Enter your doctor id: "))
     idd = int(input("Enter patient's id, whose status needs to be changed: "))
     stato = input("Enter old status: active/discharged/deceased: ")
     statn = input("Enter new patient status: active/discharged/deceased: ")
     mycur.execute("select * from {} where ID = {}".format(stato, idd))
     dat = mycur.fetchall()
-    print(dat)
     for line in dat:
-        print(line)
         dats = line
         
     idd = dats[0]
@@ -66,6 +68,7 @@ def update_general_status():
     elif stato == "deceased":
         mycur.execute("delete from deceased where ID = {}".format(idd))
         f.commit()
+    print("Status has been changed")
         
 def update_active_status():
     idd = int(input("Enter active patient's id, whose status needs updation: "))
@@ -75,8 +78,4 @@ def update_active_status():
     f.commit()
     f.close()
     mycur.close()
-    
-    
-
-update_general_status()
-update_active_status()  
+      
