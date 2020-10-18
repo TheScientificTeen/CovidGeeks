@@ -190,3 +190,15 @@ while True:
             add_beds()
         if opt == "E" or opt == "e":
             exit()
+
+            
+            
+            
+            
+            
+ def view_patient():
+    pid = int(input("Enter patient's id, whome you want to view: "))
+    mycur.execute("select * from active where ID = {}".format(pid))
+    dat = mycur.fetchall()
+    for line in dat:
+        print(line)
