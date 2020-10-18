@@ -19,3 +19,8 @@
 ### 1:00PM IST
 ##### Finished clerk interface
 ##### In process of making doctor interface
+
+### 3:00PM IST
+##### Finished doctor iterface
+##### Finished the main code (main.py)
+##### Started adding the values in the database
