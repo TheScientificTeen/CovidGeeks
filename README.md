@@ -11,3 +11,11 @@
 ### 9:20AM IST
 ##### Inserting values into the tables
 ##### Working on the doctor and nurse view
+
+### 11:00AM IST
+##### Finished nurse interface
+##### Created additional table prescriptions
+
+### 1:00PM IST
+##### Finished clerk interface
+##### In process of making doctor interface
