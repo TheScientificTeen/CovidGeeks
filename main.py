@@ -19,7 +19,7 @@ def admincall():
     
         
         if opt == "D" or opt == "d":
-            while opt != "E" or opt != "e":
+            while True:
                 print("Enter 1: Display all the doctors")
                 print("Enter 2: Add a doctor")
                 print("Enter 3: Remove a doctor")
@@ -34,9 +34,11 @@ def admincall():
                     admin.add_doctor()
                 if opt == '3':
                     admin.del_doctor()
+                if opt != "E" or opt != "e":
+                    break
 
-        if opt == "N" or opt == "n":
-            while opt != "E"or opt != "e": 
+        elif opt == "N" or opt == "n":
+            while True: 
                 print("Enter 1: Display all the nurses")
                 print("Enter 2: Add a nurse")
                 print("Enter 3: Remove a nurse")
@@ -51,10 +53,12 @@ def admincall():
                     admin.add_nurse()
                 if opt == '3':
                     admin.del_nurse()
+                if opt != "E" or opt != "e":
+                    break
 
     
-        if opt == "C" or opt == "c":
-            while opt != "E"or opt != "e": 
+        elif opt == "C" or opt == "c":
+            while True: 
                 print("Enter 1: Display all the clerks")
                 print("Enter 2: Add a clerk")
                 print("Enter 3: Remove a clerk")
@@ -69,10 +73,12 @@ def admincall():
                     admin.add_clerk()
                 if opt == '3':
                     admin.del_clerk()
+                if opt != "E" or opt != "e":
+                    break
 
 
-        if opt == "B" or opt == "b":
-            while opt != "E"or opt != "e": 
+        elif opt == "B" or opt == "b":
+            while True: 
                 print("Enter 1: Check the number of available beds")
                 print("Enter 2: Add new beds")
                 print("Enter E: Exit")
@@ -84,9 +90,11 @@ def admincall():
                     admin.available_beds()
                 if opt == '2':
                     admin.add_beds()
+                if opt != "E" or opt != "e":
+                    break
                 
                 
-        if opt == "E"or opt == "e": 
+        elif opt == "E"or opt == "e": 
             exit()
 
 
