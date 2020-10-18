@@ -41,15 +41,13 @@ def admit_patient():
         no = line[0] + 1        
     
     # Selecting a bed for the patient and then changing the bed status to occupied
-    mycur.execute("select MAX(B_NO) from beds where STATUS_Vacant_Active = 'vacant';")
+    mycur.execute("select MAX(B_NO) from beds where STATUS_Vacant_Occupied = 'vacant';")
     dat = mycur.fetchall()
     for line in dat:
         bno = line[0]
-    mycur.execute("UPDATE beds SET STATUS_Vacant_Occupied = 'occupied' where B_NO = {}".format(bno))
+    mycur.execute("UPDATE beds SET STATUS_Vacant_Occupied = 'occupied' where B_NO = {};".format(bno,))
         
-    mycur.execute("insert into active(ID, B_NO, NAME, AGE, GENDER, D_ID, DATE_ADMISSION, STATUS_Mild_Critical_Observation)values('{}','{}','{}','{}')".format(no, name, phone, qual))
+    mycur.execute("insert into active(ID, B_NO, NAME, AGE, GENDER, D_ID, DATE_ADMISSION, STATUS_Mild_Critical_Observation)values({},{},'{}',{},'{}',{},'{}','{}');".format(no, bno, name, age, gender, doc_id, doa, status))
     f.commit()
 
-display_deceased()
-display_discharged()
 admit_patient()
