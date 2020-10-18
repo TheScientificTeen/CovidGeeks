@@ -23,3 +23,11 @@ def view_patient():
 def view_prescription():
     pid = int(input("Enter patient's id, whom you want to view: "))
     mycur.execute("select NAME, MEDICATION, DOSAGE from active, prescriptions where active.ID  = prescriptions.P_ID and P_ID = {}".format(pid))
+    dat = mycur.fetchall()
+    for line in dat:
+        print(line)
+    f.commit()
+
+display_patients()
+view_patient()
+view_prescription()
