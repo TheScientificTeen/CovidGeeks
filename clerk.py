@@ -10,6 +10,7 @@ def display_deceased():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
     
 def display_discharged():
@@ -17,6 +18,7 @@ def display_discharged():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
     
 
@@ -48,6 +50,8 @@ def admit_patient():
     mycur.execute("UPDATE beds SET STATUS_Vacant_Occupied = 'occupied' where B_NO = {};".format(bno,))
         
     mycur.execute("insert into active(ID, B_NO, NAME, AGE, GENDER, D_ID, DATE_ADMISSION, STATUS_Mild_Critical_Observation)values({},{},'{}',{},'{}',{},'{}','{}');".format(no, bno, name, age, gender, doc_id, doa, status))
+    print("You added the patient sucessfully!")
+    print()
     f.commit()
 
-admit_patient()
+
