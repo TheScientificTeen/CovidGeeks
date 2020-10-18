@@ -24,3 +24,12 @@
 ##### Finished doctor iterface
 ##### Finished the main code (main.py)
 ##### Started adding the values in the database
+
+### 3:30PM IST
+##### Finished adding the values into the database
+##### Started debugging all files
+
+### 4:30PM IST
+##### Finished debugging
+##### Made minor changes
+##### Logged off for a break
