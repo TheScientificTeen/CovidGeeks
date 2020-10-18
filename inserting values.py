@@ -91,3 +91,12 @@ mycur.execute("insert into clerks(C_ID, NAME, PHONE_NO)values({},'{}','{}')".for
 mycur.execute("insert into clerks(C_ID, NAME, PHONE_NO)values({},'{}','{}')".format(202 ,'Nitika','91524354253'))
 mycur.execute("insert into clerks(C_ID, NAME, PHONE_NO)values({},'{}','{}')".format(203 ,'Rajesh','9756746574'))
 mycur.execute("insert into clerks(C_ID, NAME, PHONE_NO)values({},'{}','{}')".format(204 ,'Clark','9772635463'))
+
+#INSERTING INTO TABLE PRESCRIPTIONS
+
+mycur.execute("insert into prescriptions(P_ID, D_ID, MEDICATION, DOSAGE)values({},{},'{}','{}')".format(1 ,11,'Dolo' ,'101'))
+mycur.execute("insert into prescriptions(P_ID, D_ID, MEDICATION, DOSAGE)values({},{},'{}','{}')".format(2 ,15, 'Antibiotics' ,'110'))
+mycur.execute("insert into prescriptions(P_ID, D_ID, MEDICATION, DOSAGE)values({},{},'{}','{}')".format(3 ,13,'Aspirim' ,'122'))
+mycur.execute("insert into prescriptions(P_ID, D_ID, MEDICATION, DOSAGE)values({},{},'{}','{}')".format(4 ,14,'Benzocaine' ,'212'))
+mycur.execute("insert into prescriptions(P_ID, D_ID, MEDICATION, DOSAGE)values({},{},'{}','{}')".format(5 ,12,'setzin' ,'011'))
+
