@@ -10,6 +10,7 @@ def display_patients():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
     
 def view_patient():
@@ -18,6 +19,7 @@ def view_patient():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
 
 def view_prescription():
@@ -26,8 +28,5 @@ def view_prescription():
     dat = mycur.fetchall()
     for line in dat:
         print(line)
+    print()
     f.commit()
-
-display_patients()
-view_patient()
-view_prescription()
